@@ -34,6 +34,12 @@
             font-size: 18px;
         }
         
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+        
         .bodytype {
             font-size: 30px;
         }
@@ -213,22 +219,40 @@
         .swiper-button-next {
             right: 30%;
         }
+        
+        .bg {
+            /* The image used */
+            background-image: url("bg.jpg");
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wfDemo" data-backdrop="static">
-    Launch WearFits DEMO
-  </button>
+    <div class="bg text-center">
+        <div><button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#wfDemo" data-backdrop="static">
+        LAUNCH WEARFITS DEMO
+    </button></div>
+    </div>
+
 
     <!-- Modal -->
     <div class="modal" id="wfDemo" tabindex="-1" role="dialog" aria-labelledby="wfDemoTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="wfDemoTitle"><img src="wearfits_logo.png" alt="WearFits" style="height: 35px" /></h5>
+                    <h5 class="modal-title" id="wfDemoTitle"><img src="wearfits_logo.png" alt="WearFits" style="height: 35px" />
+                        <span class="sm">DEMO</span>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
