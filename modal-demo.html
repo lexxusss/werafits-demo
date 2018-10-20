@@ -2,483 +2,551 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:light">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
 
-  <title>WearFits DEMO</title>
-  <style>
-    body {
-      font-family: 'Rubik', serif;
-      font-weight: lighter;
-      font-size: 18px;
-    }
+    <title>WearFits DEMO</title>
 
-    .bodytype {
-      font-size: 30px;
-    }
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127730470-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    .x {
-      background-color: aquamarine
-    }
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    .y {
-      background-color: gold
-    }
+        gtag('config', 'UA-127730470-3');
+    </script>
 
-    .weihei {
-      width: 70%;
-      -webkit-border-radius: 30px;
-      -moz-border-radius: 30px;
-      border-radius: 30px;
-      background: #d3d3d3;
-      border: 0;
-      color: black;
-      font-weight: bold;
-
-    }
-
-    .card {
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-    }
-
-    .pagination {
-      font-size: 14px;
-      /* font-weight: bold; */
-    }
-
-    .page-link {
-      border-width: 0;
-      border-radius: 20px;
-      margin: 0 5px;
-    }
-
-    .pag-prev a {
-      border-width: 1px;
-    }
-
-    .pag-next a {
-      border-width: 1px;
-    }
-
-    .pag-active {
-      background: black;
-      color: white;
-    }
-
-    .pag-visited {
-      background: silver;
-      color: gray;
-    }
-
-    .sm {
-      font-size: 11px;
-    }
-
-    .label {
-      color: gray;
-    }
-
-    @media (min-width: 768px) {
-      .modal-xl {
-        width: 90%;
-        max-width: 1200px;
-      }
-    }
-
-    .carousel-item {
-      height: 500px;
-    }
-
-    /* The slider itself */
-
-    .slider {
-      -webkit-appearance: none;
-      /* Override default CSS styles */
-      appearance: none;
-      width: 100%;
-      /* Full-width */
-      height: 5px;
-      /* Specified height */
-      background: #d3d3d3;
-      /* Grey background */
-      outline: none;
-      /* Remove outline */
-      opacity: 0.7;
-      /* Set transparency (for mouse-over effects on hover) */
-      -webkit-transition: .2s;
-      /* 0.2 seconds transition on hover */
-      transition: opacity .2s;
-      border-radius: 5px;
-    }
-
-    /* Mouse-over effects */
-
-    .slider:hover {
-      opacity: 1;
-      /* Fully shown on mouse-over */
-    }
-
-    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      /* Override default look */
-      appearance: none;
-      width: 25px;
-      /* Set a specific slider handle width */
-      height: 25px;
-      /* Slider handle height */
-      background: #999;
-      /* Green background */
-      cursor: pointer;
-      /* Cursor on hover */
-      border-radius: 15px;
-    }
-
-    .slider::-moz-range-thumb {
-      width: 25px;
-      /* Set a specific slider handle width */
-      height: 25px;
-      /* Slider handle height */
-      background: #999;
-      /* Green background */
-      cursor: pointer;
-      /* Cursor on hover */
-      border-radius: 15px;
-    }
-
-    .swiper-container {
-      width: 100%;
-      height: 450px;
-    }
-
-    .swiper-slide {
-      /* width: 300px; */
-      text-align: center;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
-
-    @media (max-width: 800px) {
-      .item {
-        height: 200px;
-      }
-    }
-
-    @media (min-width: 800px) {
-      .item {
-        height: 400px;
-      }
-    }
-
-    .swiper-button-prev {
-      left: 30%;
-    }
-
-    .swiper-button-next {
-      right: 30%;
-    }
-  </style>
+    <style>
+        body {
+            font-family: 'Rubik', serif;
+            font-weight: lighter;
+            font-size: 18px;
+        }
+        
+        .bodytype {
+            font-size: 30px;
+        }
+        
+        .x {
+            background-color: aquamarine
+        }
+        
+        .y {
+            background-color: gold
+        }
+        
+        .weihei {
+            width: 70%;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+            background: #d3d3d3;
+            border: 0;
+            color: black;
+            font-weight: bold;
+        }
+        
+        .card {
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+        }
+        
+        .pagination {
+            font-size: 14px;
+            /* font-weight: bold; */
+        }
+        
+        .page-link {
+            border-width: 0px;
+            border-radius: 20px !important;
+            margin: 0px 5px;
+        }
+        
+        .pag-prev a {
+            border-width: 1px;
+            width: 85px;
+        }
+        
+        .pag-next a {
+            border-width: 1px;
+            width: 85px;
+        }
+        
+        .pag-active {
+            background: black;
+            color: white;
+        }
+        
+        .pag-visited {
+            background: silver;
+            color: gray;
+        }
+        
+        .nr a {
+            width: 33px;
+        }
+        
+        .sm {
+            font-size: 11px;
+        }
+        
+        .label {
+            color: gray;
+        }
+        
+        @media (min-width: 768px) {
+            .modal-xl {
+                width: 90%;
+                max-width: 1200px;
+            }
+        }
+        
+        .carousel-item {
+            height: 500px;
+        }
+        /* The slider itself */
+        
+        .slider {
+            -webkit-appearance: none;
+            /* Override default CSS styles */
+            appearance: none;
+            width: 100%;
+            /* Full-width */
+            height: 5px;
+            /* Specified height */
+            background: #d3d3d3;
+            /* Grey background */
+            outline: none;
+            /* Remove outline */
+            opacity: 0.7;
+            /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s;
+            /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+            border-radius: 5px;
+        }
+        /* Mouse-over effects */
+        
+        .slider:hover {
+            opacity: 1;
+            /* Fully shown on mouse-over */
+        }
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            /* Override default look */
+            appearance: none;
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #999;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+            border-radius: 15px;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #999;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+            border-radius: 15px;
+        }
+        
+        .swiper-container {
+            width: 100%;
+            height: 450px;
+        }
+        
+        .swiper-slide {
+            /* width: 300px; */
+            text-align: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        
+        @media (max-width: 800px) {
+            .item {
+                height: 200px;
+            }
+        }
+        
+        @media (min-width: 800px) {
+            .item {
+                height: 400px;
+            }
+        }
+        
+        .swiper-button-prev {
+            left: 30%;
+        }
+        
+        .swiper-button-next {
+            right: 30%;
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wfDemo" data-backdrop="static">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wfDemo" data-backdrop="static">
     Launch WearFits DEMO
   </button>
 
-  <!-- Modal -->
-  <div class="modal" id="wfDemo" tabindex="-1" role="dialog" aria-labelledby="wfDemoTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="wfDemoTitle">We<span style="background-color: black; color: white;">ar</span>Fits DEMO</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <!-- Modal -->
+    <div class="modal" id="wfDemo" tabindex="-1" role="dialog" aria-labelledby="wfDemoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="wfDemoTitle"><img src="wearfits_logo.png" alt="WearFits" style="height: 35px" /></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <div id="carouselWF" class="carousel slide" data-keyboard="false" data-wrap="false" data-ride="false">
-            <div class="carousel-inner">
-              <!-- SLIDE 1 -->
-              <div class="carousel-item active">
-                <div class="container-fluid">
-                  <div class="row justify-content-around">
-                    <!-- LEFT COLUMN -->
-                    <div class="col-5">
-                      <form>
-                        <!-- HEADER -->
-                        <div class="row">
-                          <div class="col-12 text-center sm text-uppercase font-weight-bold">YOUR PROFILE</div>
-                        </div>
-                        <!-- SIZE NUMBERS -->
-                        <div class="row py-1 mt-3">
-                          <div class="col-lg">
-                            <div class="row form-group align-items-center">
-                              <label for="height" class="col-4 col-form-label">Height</label>
-                              <div class="col-8">
-                                <input type="text" class="form-control-lg weihei" id="height" placeholder="cm">
-                              </div>
+                </div>
+                <div class="modal-body">
+                    <div id="carouselWF" class="carousel slide" data-keyboard="false" data-wrap="false" data-ride="false">
+                        <div class="carousel-inner">
+                            <!-- SLIDE 1 -->
+                            <div class="carousel-item active">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-around">
+                                        <!-- LEFT COLUMN -->
+                                        <div class="col-5">
+                                            <form>
+                                                <!-- HEADER -->
+                                                <div class="row">
+                                                    <div class="col-12 text-center sm text-uppercase font-weight-bold">YOUR PROFILE</div>
+                                                </div>
+                                                <!-- SIZE NUMBERS -->
+                                                <div class="row py-1 mt-3">
+                                                    <div class="col-lg">
+                                                        <div class="row form-group align-items-center">
+                                                            <label for="height" class="col-4 col-form-label">Height</label>
+                                                            <div class="col-8">
+                                                                <input type="text" class="form-control-lg weihei" id="height" placeholder="cm">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg">
+                                                        <div class="row form-group align-items-center">
+                                                            <label for="weight" class="col-4 col-form-label">Weight</label>
+                                                            <div class="col-8">
+                                                                <input type="text" class="form-control-lg weihei" id="weight" placeholder="kg">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- SIZE SLIDERS -->
+                                                <div class="row py-1 mt-3">
+                                                    <div class="col-6">Shoulders</div>
+                                                    <div id="shoulders" class="col-6 text-right">90 cm</div>
+                                                </div>
+                                                <div class="row align-items-center py-1">
+                                                    <div class="col-1 sm">50</div>
+                                                    <div class="col">
+                                                        <input type="range" min="50" max="150" value="90" class="slider" id="shouldersRange">
+                                                    </div>
+                                                    <div class="col-1 text-right sm">150</div>
+                                                </div>
+                                                <div class="row py-1 mt-3">
+                                                    <div class="col-6">Waist</div>
+                                                    <div id="waist" class="col-6 text-right">60 cm</div>
+                                                </div>
+                                                <div class="row align-items-center py-1">
+                                                    <div class="col-1 sm">50</div>
+                                                    <div class="col">
+                                                        <input type="range" min="50" max="150" value="60" class="slider" id="waistRange">
+                                                    </div>
+                                                    <div class="col-1 text-right sm">150</div>
+                                                </div>
+                                                <div class="row py-1 mt-3">
+                                                    <div class="col-6">Hips</div>
+                                                    <div id="hips" class="col-6 text-right">100 cm</div>
+                                                </div>
+                                                <div class="row align-items-center py-1">
+                                                    <div class="col-1 sm">50</div>
+                                                    <div class="col">
+                                                        <input type="range" min="50" max="150" value="100" class="slider" id="hipsRange">
+                                                    </div>
+                                                    <div class="col-1 text-right sm">150</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- RIGHT COLUMN -->
+                                        <div class="col-5 text-center">
+                                            <div class="sm text-uppercase font-weight-bold">BODY TYPE</div>
+                                            <div class="bodytype py-1 mt-3" id="titleSil">Hourglass</div>
+                                            <div class="mx-auto">
+                                                <img id="silImg" src="sil/hourglass.png" style="height: 385px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <div class="col-lg">
-                            <div class="row form-group align-items-center">
-                              <label for="weight" class="col-4 col-form-label">Weight</label>
-                              <div class="col-8">
-                                <input type="text" class="form-control-lg weihei" id="weight" placeholder="kg">
-                              </div>
+                            <!-- SLIDE 2 -->
+                            <div class="carousel-item">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 text-center sm text-uppercase font-weight-bold">SELECT ITEM</div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- Slider main container -->
+                                        <div class="swiper-container">
+                                            <!-- Additional required wrapper -->
+                                            <div class="swiper-wrapper">
+                                                <!-- Slides -->
+                                                <div class="swiper-slide">
+                                                    <span></span>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img class="item" src="1.jpg">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img class="item" src="2.png">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img class="item" src="3.jpg">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img class="item" src="4.png">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                            <!-- If we need navigation buttons -->
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
+                            <!-- SLIDE 3 -->
+                            <div class="carousel-item">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 text-center sm text-uppercase font-weight-bold">VISUALIZATION</div>
+                                    </div>
+                                    <div class="row justify-content-around py-1 mt-3 sm">
+                                        <div class="col-2">
+                                            <div class="card">
+                                                <div class="card-header bg-transparent font-weight-bold text-uppercase">
+                                                    ITEM
+                                                </div>
+                                                <img class="card-img mx-auto py-2" src="1.jpg" style="width: 100px" alt="">
+                                            </div>
+                                            <div class="card mt-4">
+                                                <div class="card-header bg-transparent font-weight-bold text-uppercase">
+                                                    PROFILE
+                                                </div>
+                                                <div class="card-body bg-transparent">
+                                                    <div class="row">
+                                                        <div class="col label">Height</div>
+                                                        <div class="col text-right" id="profileHeight">150 cm</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col label">Weight</div>
+                                                        <div class="col text-right" id="profileWeight">60 kg</div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-transparent">
+                                                    <div class="row">
+                                                        <div class="col label">Shoulders</div>
+                                                        <div class="col text-right" id="profileShoulders">90 cm</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col label">Waist</div>
+                                                        <div class="col text-right" id="profileWaist">60 cm</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col label">Hips</div>
+                                                        <div class="col text-right" id="profileHips">100 cm</div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-transparent">
+                                                    <div class="row">
+                                                        <div class="col label">Silhuett.</div>
+                                                        <div class="col text-right" id="profileSil">Hourglass</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="x col-8" id="content3d">loading...</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <!-- SIZE SLIDERS -->
-                        <div class="row py-1 mt-3">
-                          <div class="col-6">Shoulders</div>
-                          <div class="col-6 text-right">100cm</div>
-                        </div>
-                        <div class="row align-items-center py-1">
-                          <div class="col-1 sm">10</div>
-                          <div class="col">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange1">
-                          </div>
-                          <div class="col-1 text-right sm">100</div>
-                        </div>
-                        <div class="row py-1 mt-3">
-                          <div class="col-6">Waist</div>
-                          <div class="col-6 text-right">90cm</div>
-                        </div>
-                        <div class="row align-items-center py-1">
-                          <div class="col-1 sm">10</div>
-                          <div class="col">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange2">
-                          </div>
-                          <div class="col-1 text-right sm">100</div>
-                        </div>
-                        <div class="row py-1 mt-3">
-                          <div class="col-6">Hips</div>
-                          <div class="col-6 text-right">60cm</div>
-                        </div>
-                        <div class="row align-items-center py-1">
-                          <div class="col-1 sm">10</div>
-                          <div class="col">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
-                          </div>
-                          <div class="col-1 text-right sm">200</div>
-                        </div>
-                      </form>
                     </div>
-                    <!-- RIGHT COLUMN -->
-                    <div class="col-5 text-center">
-                      <div class="sm text-uppercase font-weight-bold">BODY TYPE</div>
-                      <div class="bodytype py-1 mt-3">Hourglass</div>
-                      <div class="mx-auto">
-                        <img src="s.png" style="height: 400px;">
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <!-- SLIDE 2 -->
-              <div class="carousel-item">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-12 text-center sm text-uppercase font-weight-bold">SELECT ITEM</div>
-                  </div>
-                  <div class="row">
-                    <!-- Slider main container -->
-                    <div class="swiper-container">
-                      <!-- Additional required wrapper -->
-                      <div class="swiper-wrapper">
-                        <!-- Slides -->
-                        <div class="swiper-slide">
-                          <span></span>
-                        </div>
-                        <div class="swiper-slide">
-                          <img class="item" src="1.jpg">
-                        </div>
-                        <div class="swiper-slide">
-                          <img class="item" src="2.png">
-                        </div>
-                        <div class="swiper-slide">
-                          <img class="item" src="3.jpg">
-                        </div>
-                        <div class="swiper-slide">
-                          <img class="item" src="4.png">
-                        </div>
-                        <div class="swiper-slide">
-                          <span></span>
-                        </div>
-                      </div>
-                      <!-- If we need navigation buttons -->
-                      <div class="swiper-button-prev"></div>
-                      <div class="swiper-button-next"></div>
-                    </div>
-                  </div>
+                <div class="modal-footer justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="pag-prev page-item disabled">
+                                <a class="page-link text-center" href="#carouselWF" tabindex="-1" data-slide="prev">Previous</a>
+                            </li>
+                            <li class="page-item nr">
+                                <a class="page-link text-center pag-1 pag-active" data-target="#carouselWF" data-slide-to="0" href="#">1</a>
+                            </li>
+                            <li class="page-item nr">
+                                <a class="page-link text-center pag-2" data-target="#carouselWF" data-slide-to="1" href="#">2</a>
+                            </li>
+                            <li class="page-item nr">
+                                <a class="page-link text-center pag-3" data-target="#carouselWF" data-slide-to="2" href="#">3</a>
+                            </li>
+                            <li class="pag-next page-item">
+                                <a class="page-link text-center" href="#carouselWF" data-slide="next">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-              </div>
-              <!-- SLIDE 3 -->
-              <div class="carousel-item">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-12 text-center sm text-uppercase font-weight-bold">VISUALIZATION</div>
-                  </div>
-                  <div class="row justify-content-around py-1 mt-3 sm">
-                    <div class="col-2">
-                      <div class="card">
-                        <div class="card-header bg-transparent font-weight-bold text-uppercase">
-                          ITEM
-                        </div>
-                        <img class="card-img mx-auto py-2" src="1.jpg" style="width: 100px" alt="">
-                      </div>
-                      <div class="card mt-4">
-                        <div class="card-header bg-transparent font-weight-bold text-uppercase">
-                          PROFILE
-                        </div>
-                        <div class="card-body bg-transparent">
-                          <div class="row">
-                            <div class="col label">Height</div>
-                            <div class="col text-right">158 cm</div>
-                          </div>
-                          <div class="row">
-                            <div class="col label">Weight</div>
-                            <div class="col text-right">56 kg</div>
-                          </div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                          <div class="row">
-                            <div class="col label">Shoulders</div>
-                            <div class="col text-right">85 cm</div>
-                          </div>
-                          <div class="row">
-                            <div class="col label">Waist</div>
-                            <div class="col text-right">61 cm</div>
-                          </div>
-                          <div class="row">
-                            <div class="col label">Hips</div>
-                            <div class="col text-right">87 cm</div>
-                          </div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                          <div class="row">
-                            <div class="col label">Silhouette</div>
-                            <div class="col text-right">Square</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="x col-8">blablabla</div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-        <div class="modal-footer justify-content-center">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="pag-prev page-item disabled">
-                <a class="page-link" href="#carouselWF" tabindex="-1" data-slide="prev">Previous</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link pag-1 pag-active" data-target="#carouselWF" data-slide-to="0" href="#">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link pag-2" data-target="#carouselWF" data-slide-to="1" href="#">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link pag-3" data-target="#carouselWF" data-slide-to="2" href="#">3</a>
-              </li>
-              <li class="pag-next page-item">
-                <a class="page-link" href="#carouselWF" data-slide="next">Next</a>
-              </li>
-            </ul>
-          </nav>
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button> -->
-        </div>
-      </div>
     </div>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
-  <script type="text/javascript">
-    $('#wfDemo').modal({ keyboard: false, backdrop: "static", show: true });
-    $('#carouselWF').on('slid.bs.carousel', function (e) {
-      // e.direction     // The direction in which the carousel is sliding (either "left" or "right").
-      // e.relatedTarget // The DOM element that is being slid into place as the active item.
-      // e.from          // The index of the current item.     
-      // e.to            // The index of the next item.
-      switch (e.to) {
-        case 0:
-          $('.pag-prev').removeClass('disabled');
-          $('.pag-prev').addClass('disabled');
-          $('.pag-next').removeClass('disabled');
-          $('.pag-1').removeClass('pag-visited').addClass('pag-active');
-          $('.pag-2').removeClass('pag-active').removeClass('pag-visited');
-          $('.pag-3').removeClass('pag-active');
-          break;
-        case 1:
-          $('.pag-prev').removeClass('disabled');
-          $('.pag-next').removeClass('disabled');
-          $('.pag-1').removeClass('pag-active').addClass('pag-visited');
-          $('.pag-2').removeClass('pag-visited').addClass('pag-active');
-          $('.pag-3').removeClass('pag-active');
-          break;
-        case 2:
-          $('.pag-prev').removeClass('disabled');
-          $('.pag-next').removeClass('disabled');
-          $('.pag-next').addClass('disabled');
-          $('.pag-1').removeClass('pag-active').addClass('pag-visited');
-          $('.pag-2').removeClass('pag-active').addClass('pag-visited');
-          $('.pag-3').removeClass('pag-visited').addClass('pag-active');
-      }
-    });
-    $('#carouselWF').carousel('pause');
-  </script>
+    <script type="text/javascript">
+        var height = 0;
+        var weight = 0;
+        var shoulders = 90;
+        var waist = 60;
+        var hips = 100;
+        var sil = 'pear';
+        var avatarHash = 'unknown';
+        var dress = 'dress_demo_1';
+        $('#wfDemo').modal({
+            keyboard: false,
+            backdrop: "static",
+            show: true
+        });
+        $('#carouselWF').on('slid.bs.carousel', function(e) {
+            // e.direction     // The direction in which the carousel is sliding (either "left" or "right").
+            // e.relatedTarget // The DOM element that is being slid into place as the active item.
+            // e.from          // The index of the current item.     
+            // e.to            // The index of the next item.
+            switch (e.to) {
+                case 0:
+                    $('.pag-prev').removeClass('disabled');
+                    $('.pag-prev').addClass('disabled');
+                    $('.pag-next').removeClass('disabled');
+                    $('.pag-1').removeClass('pag-visited').addClass('pag-active');
+                    $('.pag-2').removeClass('pag-active').removeClass('pag-visited');
+                    $('.pag-3').removeClass('pag-active');
+                    break;
+                case 1:
+                    $('.pag-prev').removeClass('disabled');
+                    $('.pag-next').removeClass('disabled');
+                    $('.pag-1').removeClass('pag-active').addClass('pag-visited');
+                    $('.pag-2').removeClass('pag-visited').addClass('pag-active');
+                    $('.pag-3').removeClass('pag-active');
+                    break;
+                case 2:
+                    $('.pag-prev').removeClass('disabled');
+                    $('.pag-next').removeClass('disabled');
+                    $('.pag-next').addClass('disabled');
+                    $('.pag-1').removeClass('pag-active').addClass('pag-visited');
+                    $('.pag-2').removeClass('pag-active').addClass('pag-visited');
+                    $('.pag-3').removeClass('pag-visited').addClass('pag-active');
+                    height = parseInt(document.getElementById("height").value);
+                    weight = parseInt(document.getElementById("weight").value);
+                    checkSil();
+                    $("#profileHeight").text(height + " cm");
+                    $("#profileWeight").text(weight + " kg");
+                    $("#profileShoulders").text(shoulders + " cm");
+                    $("#profileWaist").text(waist + " cm");
+                    $("#profileHips").text(hips + " cm");
+                    $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
+                    $("#content3d").text("dress name: " + dress + " / avatar hash: " + avatarHash);
+            }
+        });
+        $('#carouselWF').carousel('pause');
+        var shouldersRange = document.getElementById("shouldersRange");
+        shouldersRange.oninput = function() {
+            shoulders = this.value;
+            $("#shoulders").text(this.value + " cm");
+            checkSil();
+        }
+        var waistRange = document.getElementById("waistRange");
+        waistRange.oninput = function() {
+            waist = this.value;
+            $("#waist").text(this.value + " cm");
+            checkSil();
+        }
+        var hipsRange = document.getElementById("hipsRange");
+        hipsRange.oninput = function() {
+            hips = this.value;
+            $("#hips").text(this.value + " cm");
+            checkSil();
+        }
 
-  <script>
-    var mySwiper = new Swiper('.swiper-container', {
-      slidesPerView: 3,
-      spaceBetween: 50,
-      grabCursor: true,
-      observer: true,
-      observeParents: true,
-      initialSlide: 1,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    })
-  </script>
+        function checkSil() {
+            // silhouettes = [apple, hourglass, pear, rectangle, triangle]
+            if (waist > shoulders * 1.1 && waist > hips * 1.1) sil = 'apple'
+            else if (shoulders > waist * 1.1 && waist > hips * 1.1) sil = 'triangle'
+            else if (hips > shoulders * 1.2) sil = 'pear'
+            else if (hips > waist * 1.1 && shoulders > waist * 1.1) sil = 'hourglass'
+            else sil = 'rectangle';
+            $("#silImg").attr("src", "sil/" + sil + ".png");
+            $("#titleSil").text(sil[0].toUpperCase() + sil.substring(1));
+
+            if (!height || height < 100 || height > 200) height = 160;
+            if (!weight || weight < 40 || weight > 150) weight = 65;
+
+            avatarHash = CryptoJS.MD5([height, weight, sil].join(""));
+        }
+    </script>
+
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 50,
+            grabCursor: true,
+            observer: true,
+            observeParents: true,
+            initialSlide: 1,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        })
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 
 </body>
 
