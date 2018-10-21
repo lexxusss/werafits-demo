@@ -231,6 +231,10 @@
             flex-direction: column;
             justify-content: center;
         }
+        /* #content3d {
+            width: 200px;
+            height: 200px;
+        } */
     </style>
 </head>
 
@@ -408,7 +412,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="x col-10" id="content3d">loading...</div>
+                                        <div class="col-12 col-xl-10" id="content3d"></div>
                                     </div>
                                 </div>
                             </div>
@@ -499,7 +503,7 @@
                     $("#profileWaist").text(waist + " cm");
                     $("#profileHips").text(hips + " cm");
                     $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
-                    $("#content3d").text("dress name: " + selectedItem + " / avatar hash: " + avatarHash);
+                    // $("#content3d").text("dress name: " + selectedItem + " / avatar hash: " + avatarHash);
             }
         });
         $('#carouselWF').carousel('pause');
@@ -560,6 +564,9 @@
         }
         mySwiper.appendSlide('<div class="swiper-slide"><span></span></div>');
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/97/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
+    <script src="3js.js"></script>
 </body>
 
 </html>
