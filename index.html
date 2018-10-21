@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:light">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
 
     <title>WearFits DEMO</title>
@@ -23,7 +23,6 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'UA-127730470-3');
     </script>
 
@@ -352,21 +351,6 @@
                                                 <div class="swiper-slide">
                                                     <span></span>
                                                 </div>
-                                                <div class="swiper-slide">
-                                                    <img class="item" src="1.jpg">
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <img class="item" src="2.png">
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <img class="item" src="3.jpg">
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <img class="item" src="4.png">
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <span></span>
-                                                </div>
                                             </div>
                                             <!-- If we need navigation buttons -->
                                             <div class="swiper-button-prev"></div>
@@ -387,7 +371,7 @@
                                                 <div class="card-header bg-transparent font-weight-bold text-uppercase">
                                                     ITEM
                                                 </div>
-                                                <img class="card-img mx-auto py-2" src="1.jpg" style="width: 100px" alt="">
+                                                <img id="item" class="card-img mx-auto py-2" src="" style="width: 100px" alt="">
                                             </div>
                                             <div class="card mt-4">
                                                 <div class="card-header bg-transparent font-weight-bold text-uppercase">
@@ -472,7 +456,9 @@
         var hips = 100;
         var sil = 'pear';
         var avatarHash = 'unknown';
-        var dress = 'dress_demo_1';
+        var dressUrl = 'dresses/'
+        var dresses = ['1.jpg', '2.png', '3.jpg', '4.png'];
+        var selectedItem = '';
         $('#wfDemo').modal({
             keyboard: false,
             backdrop: "static",
@@ -515,7 +501,7 @@
                     $("#profileWaist").text(waist + " cm");
                     $("#profileHips").text(hips + " cm");
                     $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
-                    $("#content3d").text("dress name: " + dress + " / avatar hash: " + avatarHash);
+                    $("#content3d").text("dress name: " + selectedItem + " / avatar hash: " + avatarHash);
             }
         });
         $('#carouselWF').carousel('pause');
@@ -552,6 +538,9 @@
             if (!weight || weight < 40 || weight > 150) weight = 65;
 
             avatarHash = CryptoJS.MD5([height, weight, sil].join(""));
+
+            selectedItem = dresses[mySwiper.realIndex];
+            $("#item").attr("src", dressUrl + selectedItem);
         }
     </script>
 
@@ -568,6 +557,10 @@
                 prevEl: '.swiper-button-prev',
             },
         })
+        for (d in dresses) {
+            mySwiper.appendSlide('<div class="swiper-slide"><img class="item" src="' + dressUrl + dresses[d] + '"></div>');
+        }
+        mySwiper.appendSlide('<div class="swiper-slide"><span></span></div>');
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
