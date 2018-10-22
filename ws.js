@@ -1,5 +1,5 @@
-var height = 0;
-var weight = 0;
+var height = 165;
+var avatar_size = 38;
 var shoulders = 90;
 var waist = 60;
 var hips = 100;
@@ -7,20 +7,12 @@ var sil = 'hourglass';
 var avatarHash = 'unknown';
 var dressUrl = 'dresses/'
 var dresses = [
-	{'image' : 'rozowa.png', 'name' : 'Rozowa', 'sizes' : [34, 36, 38, 40, 42] },
+	{'image' : 'rozowa.png', 'name' : 'Rozowa', 'sizes' : [34, 38, 42] },
 	{'image' : 'kimono.png', 'name' : 'Czarna', 'sizes' : [34, 38, 42] },
-	{'image' : 'czerwona.png', 'name' : 'Czerwona', 'sizes' : [34, 36, 38, 40, 42] },
+	{'image' : 'czerwona.png', 'name' : 'Czerwona', 'sizes' : [34, 38, 42] },
 ];
 var selectedItem = '';
 var selectedSize = 38;
-
-var sizeTable = {
-	'XS' : 34,
-	'S' : 36,
-	'M' : 38,
-	'L' : 40,
-	'XL' : 42
-}
 
 var avatarList = {
     "34_155_rectangle" : "5c295852a533c2e5ba10162382cdbaa1",
@@ -133,17 +125,15 @@ $('#carouselWF').on('slid.bs.carousel', function(e) {
             $('.pag-1').removeClass('pag-active').addClass('pag-visited');
             $('.pag-2').removeClass('pag-active').addClass('pag-visited');
             $('.pag-3').removeClass('pag-visited').addClass('pag-active');
-            height = parseInt(document.getElementById("height").value);
-            weight = parseInt(document.getElementById("weight").value);
             checkSil();
             $("#profileHeight").text(height + " cm");
-            $("#profileWeight").text(weight);
+            $("#profileSize").text(parseInt(document.getElementById("avatarSize").value));
             $("#profileShoulders").text(shoulders + " cm");
             $("#profileWaist").text(waist + " cm");
             $("#profileHips").text(hips + " cm");
             $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
             // $("#content3d").text("dress name: " + selectedItem + " / avatar hash: " + avatarHash);
-			var url = 'http://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
+			var url = 'https://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
 			$("#content3d").html('<iframe src="' + url + '" style="width:100%;height:100%;" frameBorder="0"></iframe>')
     }
 });
@@ -152,6 +142,13 @@ var shouldersRange = document.getElementById("shouldersRange");
 shouldersRange.oninput = function() {
     shoulders = this.value;
     $("#shoulders").text(this.value + " cm");
+	var size = 2 * Math.round( ( (shoulders / 2) - 6 ) / 2 );
+	if (size > 42)
+		size = 42;
+	if (size < 34)
+		size = 34;
+	var size = $("#avatarSize").val(size);
+	console.log(shoulders, size)
     checkSil();
 }
 var waistRange = document.getElementById("waistRange");
@@ -177,7 +174,7 @@ function checkSil() {
     $("#silImg").attr("src", "sil/" + sil + ".png");
     $("#titleSil").text(sil[0].toUpperCase() + sil.substring(1));
 
-    weight = $("#weight").val();
+    var size = $("#avatarSize").val();
 	height = parseInt($("#height").val());
 	if(height < 160)
 		height = 155;
@@ -187,8 +184,7 @@ function checkSil() {
 		height = 165;
 
     //avatarHash = CryptoJS.MD5([height, weight, sil].join(""));
-	
-	var size = sizeTable[weight];
+	console.log([size, height, sil].join("_"))
 	avatarHash = avatarList[[size, height, sil].join("_")]
 
     selectedItem = dresses[mySwiper.realIndex];
