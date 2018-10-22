@@ -3,15 +3,16 @@ var weight = 0;
 var shoulders = 90;
 var waist = 60;
 var hips = 100;
-var sil = 'pear';
+var sil = 'hourglass';
 var avatarHash = 'unknown';
 var dressUrl = 'dresses/'
 var dresses = [
-	{'image' : 'rozowa.png', 'name' : 'Rozowa', 'size' : 38},
-	{'image' : 'kimono.png', 'name' : 'Czarna', 'size' : 38},
-	{'image' : 'czerwona.png', 'name' : 'Czerwona', 'size' : 38},
-	];
+	{'image' : 'rozowa.png', 'name' : 'Rozowa', 'sizes' : [34, 36, 38, 40, 42] },
+	{'image' : 'kimono.png', 'name' : 'Czarna', 'sizes' : [34, 38, 42] },
+	{'image' : 'czerwona.png', 'name' : 'Czerwona', 'sizes' : [34, 36, 38, 40, 42] },
+];
 var selectedItem = '';
+var selectedSize = 38;
 
 var sizeTable = {
 	'XS' : 34,
@@ -136,13 +137,13 @@ $('#carouselWF').on('slid.bs.carousel', function(e) {
             weight = parseInt(document.getElementById("weight").value);
             checkSil();
             $("#profileHeight").text(height + " cm");
-            $("#profileWeight").text(weight + " kg");
+            $("#profileWeight").text(weight);
             $("#profileShoulders").text(shoulders + " cm");
             $("#profileWaist").text(waist + " cm");
             $("#profileHips").text(hips + " cm");
             $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
             // $("#content3d").text("dress name: " + selectedItem + " / avatar hash: " + avatarHash);
-			var url = 'http://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedItem.size;
+			var url = 'http://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
 			$("#content3d").html('<iframe src="' + url + '" style="width:100%;height:100%;" frameBorder="0"></iframe>')
     }
 });
