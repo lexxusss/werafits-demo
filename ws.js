@@ -52,7 +52,8 @@ var avatarList = {
     "38_155_apple" : "abeea3401c4be411c79e65466eaa29ea",
     "38_165_rectangle" : "fde842d49775c144bb8883e132329109",
     "38_165_pear" : "6c776af42aba22c7e81abeb0001af377",
-    "38_165_hourglass" : "6e3d97b448acce8ffbb5a9a2d5d09a72",
+    //"38_165_hourglass" : "6e3d97b448acce8ffbb5a9a2d5d09a72", // REPLACED
+	"38_165_hourglass" : "95daa8699f956ce690a9c15c97206389", // REPLACED
     "38_165_triangle" : "2b74dc3d8644145fa264ab1637300879",
     "38_165_apple" : "3993bb25634001dc2541acf670a3509b",
     "38_175_rectangle" : "a16bd502d0c462a3957e4fd4cf526c82",
