@@ -133,9 +133,11 @@ $('#carouselWF').on('slid.bs.carousel', function(e) {
             $("#profileWaist").text(waist + " cm");
             $("#profileHips").text(hips + " cm");
             $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
-            // $("#content3d").text("dress name: " + selectedItem + " / avatar hash: " + avatarHash);
-			var url = 'https://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
-			$("#content3d").html('<iframe src="' + url + '" style="width:100%;height:100%;" frameBorder="0"></iframe>')
+
+			wearfits.load(avatarHash, selectedItem.name + "_" + selectedSize)
+			wearfits.canvasResize();
+			//var url = 'https://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
+			//$("#content3d").html('<iframe src="' + url + '" style="width:100%;height:100%;" frameBorder="0"></iframe>')
     }
 });
 $('#carouselWF').carousel('pause');
@@ -148,8 +150,7 @@ shouldersRange.oninput = function() {
 		size = 42;
 	if (size < 34)
 		size = 34;
-	var size = $("#avatarSize").val(size);
-	console.log(shoulders, size)
+	$("#avatarSize").val(size);
     checkSil();
 }
 var waistRange = document.getElementById("waistRange");
