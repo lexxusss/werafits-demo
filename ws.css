@@ -126,10 +126,6 @@ html {
     }
 }
 
-.carousel-item {
-    height: 500px;
-}
-
 
 /* The slider itself */
 
@@ -193,7 +189,6 @@ html {
 
 .swiper-container {
     width: 100%;
-    height: 450px;
 }
 
 .swiper-slide {
@@ -215,7 +210,19 @@ html {
 
 @media (max-width: 800px) {
     .item {
-        height: 200px;
+        height: 350px;
+    }
+    .swiper-container {
+        height: 400px;
+    }
+    .carousel-item {
+        height: 450px;
+    }
+    .swiper-button-prev {
+        left: 10%;
+    }
+    .swiper-button-next {
+        right: 10%;
     }
 }
 
@@ -223,14 +230,18 @@ html {
     .item {
         height: 400px;
     }
-}
-
-.swiper-button-prev {
-    left: 30%;
-}
-
-.swiper-button-next {
-    right: 30%;
+    .swiper-container {
+        height: 450px;
+    }
+    .carousel-item {
+        height: 500px;
+    }
+    .swiper-button-prev {
+        left: 30%;
+    }
+    .swiper-button-next {
+        right: 30%;
+    }
 }
 
 .bg {
@@ -245,4 +256,19 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.size-buttons {
+    text-align: center;
+}
+
+.size-buttons a {
+    display: inline-block;
+    border: 1px solid #007aff;
+    color: #007aff;
+    text-decoration: none;
+    padding: 2px 5px;
+    border-radius: 2px;
+    margin: 0 5px;
+    font-size: 12px;
 }
