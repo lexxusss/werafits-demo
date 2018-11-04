@@ -7,9 +7,9 @@ var sil = 'hourglass';
 var avatarHash = 'unknown';
 var dressUrl = 'dresses/'
 var dresses = [
-    { 'image': 'rozowa.png', 'name': 'Rozowa', 'sizes': [34, 38, 42] },
+    { 'image': 'rozowa.png', 'name': 'Rozowa', 'sizes': [38] },
     { 'image': 'kimono.png', 'name': 'Czarna', 'sizes': [34, 38, 42] },
-    { 'image': 'czerwona.png', 'name': 'Czerwona', 'sizes': [34, 38, 42] },
+    { 'image': 'czerwona.png', 'name': 'Czerwona', 'sizes': [38] },
 ];
 var selectedItem = '';
 var selectedSize = '';
