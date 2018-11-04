@@ -271,10 +271,19 @@ html {
 .size-buttons a {
     display: inline-block;
     border: 1px solid #007aff;
-    color: #007aff;
     text-decoration: none;
     padding: 2px 5px;
     border-radius: 2px;
     margin: 0 5px;
     font-size: 12px;
+}
+
+.size-buttons a:hover {
+    color: #fff;
+    background-color: #108aff;
+}
+
+.sizeSelected {
+    color: #fff;
+    background-color: #007aff;
 }

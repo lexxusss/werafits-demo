@@ -12,7 +12,7 @@ var dresses = [
     { 'image': 'czerwona.png', 'name': 'Czerwona', 'sizes': [34, 38, 42] },
 ];
 var selectedItem = '';
-var selectedSize = 38;
+var selectedSize = '';
 
 var avatarList = {
     "34_155_rectangle": "5c295852a533c2e5ba10162382cdbaa1",
@@ -117,7 +117,7 @@ $('#carouselWF').on('slid.bs.carousel', function(e) {
             $('.pag-next').removeClass('disabled');
             $('.pag-1').removeClass('pag-active').addClass('pag-visited');
             $('.pag-2').removeClass('pag-visited').addClass('pag-active');
-            $('.pag-3').removeClass('pag-active');
+            $('.pag-3').removeClass('pag-active')
             break;
         case 2:
             $('.pag-prev').removeClass('disabled');
@@ -134,10 +134,10 @@ $('#carouselWF').on('slid.bs.carousel', function(e) {
             $("#profileHips").text(hips + " cm");
             $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
 
-			wearfits.load(avatarHash, selectedItem.name + "_" + selectedSize)
-			wearfits.canvasResize();
-			//var url = 'https://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
-			//$("#content3d").html('<iframe src="' + url + '" style="width:100%;height:100%;" frameBorder="0"></iframe>')
+            wearfits.load(avatarHash, selectedItem.name + "_" + selectedSize)
+            wearfits.canvasResize();
+            //var url = 'https://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
+            //$("#content3d").html('<iframe src="' + url + '" style="width:100%;height:100%;" frameBorder="0"></iframe>')
     }
 });
 $('#carouselWF').carousel('pause');
@@ -192,6 +192,20 @@ function checkSil() {
     selectedItem = dresses[mySwiper.realIndex];
     $("#item").attr("src", dressUrl + selectedItem.image);
 }
+
+function changeSize(size = 38) {
+    selectedSize = size;
+    selectedItem = dresses[mySwiper.realIndex];
+    sizes = ''
+    for (s in selectedItem.sizes) {
+        style = ''
+        if (selectedSize == selectedItem.sizes[s]) {
+            style = 'sizeSelected'
+        }
+        sizes += '<a href="#" class="' + style + '" onClick="changeSize(' + selectedItem.sizes[s] + ')">' + selectedItem.sizes[s] + '</a>';
+    }
+    $("#sizes").html(sizes);
+}
 var mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 3,
     spaceBetween: 50,
@@ -208,8 +222,12 @@ var mySwiper = new Swiper('.swiper-container', {
             slidesPerView: 1
         }
     }
-})
+});
+mySwiper.on('slideChange', function() {
+    changeSize();
+});
 for (d in dresses) {
     mySwiper.appendSlide('<div class="swiper-slide"><img class="item" src="' + dressUrl + dresses[d].image + '"></div>');
 }
 mySwiper.appendSlide('<div class="swiper-slide"><span></span></div>');
+changeSize();
