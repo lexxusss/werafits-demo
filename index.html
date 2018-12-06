@@ -148,9 +148,6 @@
                                             <!-- Additional required wrapper -->
                                             <div class="swiper-wrapper">
                                                 <!-- Slides -->
-                                                <div class="swiper-slide">
-                                                    <span></span>
-                                                </div>
                                             </div>
                                             <!-- If we need navigation buttons -->
                                             <div class="swiper-button-prev"></div>
@@ -218,11 +215,12 @@
                                         </div>
                                         <div class="col content3d">
 
-                                            <div style="position:absolute;right:0;top:-35px;z-index:4">
-                                                <div onclick="wearfits.toggleStrainMap(this)" class="pag-visited page-link" style="width:73px;height:30px">COMFORT</div>
+                                            <div style="position:absolute;right:0;top:-35px;z-index:4;width:80px">
+                                                <div onclick="wearfits.toggleStrainMap(this)" class="pag-visited page-link" style="display:inline-block;float:right">COMFORT</div>
+												<div onclick="wearfits.downloadAR(this)" id="show_ar_button" class="pag-visited page-link" style="display:none;float:right;;margin-top:5px">AR</div>
                                             </div>
 
-                                            <div style="position:absolute;left:0;top:-35px;z-index:4;width: 100px">
+                                            <div style="position:absolute;left:0;top:-35px;z-index:4;width:100px">
                                                 <div onclick="wearfits.toggleTheme(this)" class="pag-visited page-link" style="display:inline-block">BACKGROUND</div>
                                                 <div onclick="wearfits.toggleFrontBack(this)" class="pag-visited page-link" style="display:inline-block;margin-top:5px">FRONT/BACK</div>
                                                 <div onclick="wearfits.toggleRotation(this)" class="pag-visited page-link" style="display:inline-block;margin-top:5px">ROTATION</div>

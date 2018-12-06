@@ -134,10 +134,18 @@ $('#carouselWF').on('slid.bs.carousel', function(e) {
             $("#profileHips").text(hips + " cm");
             $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
 
+            //Load avatar + garment
             wearfits.load(avatarHash, selectedItem.name + "_" + selectedSize)
+
+            //Resize canvas fix, canvas container is 1px on first slide
             wearfits.canvasResize();
-            //var url = 'https://demo.wearfits.com:3000/?nogui=1&avatarid=' + avatarHash + '&garmentid=' + selectedItem.name + "_" + selectedSize;
-            //$("#content3d").html('<iframe src="' + url + '" style="width:100%;height:100%;" frameBorder="0"></iframe>')
+
+            //Display AR button for one avatar and one size and only for ios
+            if (selectedSize == 38 && avatarHash == "95daa8699f956ce690a9c15c97206389" && /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+                $("#show_ar_button").show()
+            } else {
+                $("#show_ar_button").hide()
+            }
     }
 });
 $('#carouselWF').carousel('pause');
@@ -186,7 +194,7 @@ function checkSil() {
         height = 165;
 
     //avatarHash = CryptoJS.MD5([height, weight, sil].join(""));
-    console.log([size, height, sil].join("_"))
+    //console.log([size, height, sil].join("_"))
     avatarHash = avatarList[[size, height, sil].join("_")]
 
     selectedItem = dresses[mySwiper.realIndex];
@@ -213,6 +221,7 @@ var mySwiper = new Swiper('.swiper-container', {
     observer: true,
     observeParents: true,
     initialSlide: 1,
+    centeredSlides: true,
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -226,8 +235,9 @@ var mySwiper = new Swiper('.swiper-container', {
 mySwiper.on('slideChange', function() {
     changeSize();
 });
+
 for (d in dresses) {
     mySwiper.appendSlide('<div class="swiper-slide"><img class="item" src="' + dressUrl + dresses[d].image + '"></div>');
 }
-mySwiper.appendSlide('<div class="swiper-slide"><span></span></div>');
+
 changeSize();
