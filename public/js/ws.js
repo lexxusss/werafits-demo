@@ -1,20 +1,19 @@
-var height = 165;
-var avatar_size = 38;
-var shoulders = 90;
-var waist = 60;
-var hips = 100;
-var sil = 'hourglass';
-var avatarHash = 'unknown';
-var dressUrl = 'dresses/'
-var dresses = [
+let height = 165;
+let shoulders = 90;
+let waist = 60;
+let hips = 100;
+let sil = 'hourglass';
+let avatarHash = 'unknown';
+let dressUrl = 'img/dresses/';
+let dresses = [
     { 'image': 'rozowa.png', 'name': 'Rozowa', 'sizes': [34, 38, 42] },
     { 'image': 'kimono.png', 'name': 'Czarna', 'sizes': [34, 38, 42] },
     { 'image': 'czerwona.png', 'name': 'Czerwona', 'sizes': [34, 38, 42] },
 ];
-var selectedItem = '';
-var selectedSize = '';
+let selectedItem = '';
+let selectedSize = '';
 
-var avatarList = {
+let avatarList = {
     "34_155_rectangle": "5c295852a533c2e5ba10162382cdbaa1",
     "34_155_pear": "e3b8181b1c143cab5575bc03007eeb25",
     "34_155_hourglass": "20fdedfa820a1c0521412f3520795b22",
@@ -91,41 +90,50 @@ var avatarList = {
     "42_175_hourglass": "7a40909d9e4a077cf6133d7244751c2e",
     "42_175_triangle": "06f536a197e52136e1882f2febc9d918",
     "42_175_apple": "721fe32d85d316817e8d01820bf5489c",
-}
+};
 
-$('#wfDemo').modal({
+
+let carouselWF = $('#carouselWF');
+let wfDemo = $('#wfDemo');
+
+wfDemo.modal({
     keyboard: false,
     backdrop: "static",
     show: true
 });
-$('#carouselWF').on('slid.bs.carousel', function(e) {
+
+carouselWF.on('slid.bs.carousel', function(e) {
     // e.direction     // The direction in which the carousel is sliding (either "left" or "right").
     // e.relatedTarget // The DOM element that is being slid into place as the active item.
     // e.from          // The index of the current item.     
     // e.to            // The index of the next item.
+
+    let pagePrev = $('.pag-prev');
+    let pageNext = $('.pag-next');
+    let page1 = $('.pag-1');
+    let page2 = $('.pag-2');
+    let page3 = $('.pag-3');
     switch (e.to) {
         case 0:
-            $('.pag-prev').removeClass('disabled');
-            $('.pag-prev').addClass('disabled');
-            $('.pag-next').removeClass('disabled');
-            $('.pag-1').removeClass('pag-visited').addClass('pag-active');
-            $('.pag-2').removeClass('pag-active').removeClass('pag-visited');
-            $('.pag-3').removeClass('pag-active');
+            pagePrev.removeClass('disabled').addClass('disabled');
+            pageNext.removeClass('disabled');
+            page1.removeClass('pag-visited').addClass('pag-active');
+            page2.removeClass('pag-active').removeClass('pag-visited');
+            page3.removeClass('pag-active');
             break;
         case 1:
-            $('.pag-prev').removeClass('disabled');
-            $('.pag-next').removeClass('disabled');
-            $('.pag-1').removeClass('pag-active').addClass('pag-visited');
-            $('.pag-2').removeClass('pag-visited').addClass('pag-active');
-            $('.pag-3').removeClass('pag-active')
+            pagePrev.removeClass('disabled');
+            pageNext.removeClass('disabled');
+            page1.removeClass('pag-active').addClass('pag-visited');
+            page2.removeClass('pag-visited').addClass('pag-active');
+            page3.removeClass('pag-active');
             break;
         case 2:
-            $('.pag-prev').removeClass('disabled');
-            $('.pag-next').removeClass('disabled');
-            $('.pag-next').addClass('disabled');
-            $('.pag-1').removeClass('pag-active').addClass('pag-visited');
-            $('.pag-2').removeClass('pag-active').addClass('pag-visited');
-            $('.pag-3').removeClass('pag-visited').addClass('pag-active');
+            pagePrev.removeClass('disabled');
+            pageNext.removeClass('disabled').addClass('disabled');
+            page1.removeClass('pag-active').addClass('pag-visited');
+            page2.removeClass('pag-active').addClass('pag-visited');
+            page3.removeClass('pag-visited').addClass('pag-active');
             checkSil();
             $("#profileHeight").text(height + " cm");
             $("#profileSize").text(parseInt(document.getElementById("avatarSize").value));
@@ -135,56 +143,56 @@ $('#carouselWF').on('slid.bs.carousel', function(e) {
             $("#profileSil").text(sil[0].toUpperCase() + sil.substring(1));
 
             //Load avatar + garment
-            wearfits.load(avatarHash, selectedItem.name + "_" + selectedSize)
+            wearfits.load(avatarHash, selectedItem.name + "_" + selectedSize);
 
             //Resize canvas fix, canvas container is 1px on first slide
             wearfits.canvasResize();
 
             //Display AR button for one avatar and one size and only for ios
-            if (selectedSize == 38 && avatarHash == "95daa8699f956ce690a9c15c97206389" && /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+            if (selectedSize === 38 && avatarHash === "95daa8699f956ce690a9c15c97206389" && /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
                 $("#show_ar_button").show()
             } else {
                 $("#show_ar_button").hide()
             }
     }
 });
-$('#carouselWF').carousel('pause');
-var shouldersRange = document.getElementById("shouldersRange");
+carouselWF.carousel('pause');
+let shouldersRange = document.getElementById("shouldersRange");
 shouldersRange.oninput = function() {
     shoulders = this.value;
     $("#shoulders").text(this.value + " cm");
-    var size = 2 * Math.round(((shoulders / 2) - 6) / 2);
+    let size = 2 * Math.round(((shoulders / 2) - 6) / 2);
     if (size > 42)
         size = 42;
     if (size < 34)
         size = 34;
     $("#avatarSize").val(size);
     checkSil();
-}
-var waistRange = document.getElementById("waistRange");
+};
+let waistRange = document.getElementById("waistRange");
 waistRange.oninput = function() {
     waist = this.value;
     $("#waist").text(this.value + " cm");
     checkSil();
-}
-var hipsRange = document.getElementById("hipsRange");
+};
+let hipsRange = document.getElementById("hipsRange");
 hipsRange.oninput = function() {
     hips = this.value;
     $("#hips").text(this.value + " cm");
     checkSil();
-}
+};
 
 function checkSil() {
     // silhouettes = [apple, hourglass, pear, rectangle, triangle]
-    if (waist > shoulders * 1.1 && waist > hips * 1.1) sil = 'apple'
-    else if (shoulders > waist * 1.1 && waist > hips * 1.1) sil = 'triangle'
-    else if (hips > shoulders * 1.2) sil = 'pear'
-    else if (hips > waist * 1.1 && shoulders > waist * 1.1) sil = 'hourglass'
+    if (waist > shoulders * 1.1 && waist > hips * 1.1) sil = 'apple';
+    else if (shoulders > waist * 1.1 && waist > hips * 1.1) sil = 'triangle';
+    else if (hips > shoulders * 1.2) sil = 'pear';
+    else if (hips > waist * 1.1 && shoulders > waist * 1.1) sil = 'hourglass';
     else sil = 'rectangle';
     $("#silImg").attr("src", "sil/" + sil + ".png");
     $("#titleSil").text(sil[0].toUpperCase() + sil.substring(1));
 
-    var size = $("#avatarSize").val();
+    let size = $("#avatarSize").val();
     height = parseInt($("#height").val());
     if (height < 160)
         height = 155;
@@ -195,7 +203,7 @@ function checkSil() {
 
     //avatarHash = CryptoJS.MD5([height, weight, sil].join(""));
     //console.log([size, height, sil].join("_"))
-    avatarHash = avatarList[[size, height, sil].join("_")]
+    avatarHash = avatarList[[size, height, sil].join("_")];
 
     selectedItem = dresses[mySwiper.realIndex];
     $("#item").attr("src", dressUrl + selectedItem.image);
@@ -204,17 +212,20 @@ function checkSil() {
 function changeSize(size = 38) {
     selectedSize = size;
     selectedItem = dresses[mySwiper.realIndex];
-    sizes = ''
-    for (s in selectedItem.sizes) {
-        style = ''
-        if (selectedSize == selectedItem.sizes[s]) {
-            style = 'sizeSelected'
+    let sizes = '';
+    for (let s in selectedItem.sizes) {
+        let style = '';
+
+        if (selectedItem.sizes.hasOwnProperty(s)) {
+            if (selectedSize === selectedItem.sizes[s]) {
+                style = 'sizeSelected'
+            }
+            sizes += '<a href="#" class="' + style + '" onClick="changeSize(' + selectedItem.sizes[s] + ')">' + selectedItem.sizes[s] + '</a>';
         }
-        sizes += '<a href="#" class="' + style + '" onClick="changeSize(' + selectedItem.sizes[s] + ')">' + selectedItem.sizes[s] + '</a>';
     }
     $("#sizes").html(sizes);
 }
-var mySwiper = new Swiper('.swiper-container', {
+let mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 3,
     spaceBetween: 50,
     grabCursor: true,
@@ -236,7 +247,7 @@ mySwiper.on('slideChange', function() {
     changeSize();
 });
 
-for (d in dresses) {
+for (let d in dresses) {
     mySwiper.appendSlide('<div class="swiper-slide"><img class="item" src="' + dressUrl + dresses[d].image + '"></div>');
 }
 

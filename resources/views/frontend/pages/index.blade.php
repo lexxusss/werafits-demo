@@ -1,51 +1,18 @@
-<!doctype html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:light">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
-    <link rel="stylesheet" href="ws.css">
+@extends('frontend.layouts.main')
 
-    <title>WearFits DEMO</title>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127730470-3"></script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/97/three.min.js"></script>
-    <script type="text/javascript" src="https://demo.wearfits.com:3000/js/threejs/OrbitControls.js"></script>
-    <script type="text/javascript" src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
-    <script type="text/javascript" src="https://demo.wearfits.com:3000/js/wearfits.js" id="wearfits_script"></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-127730470-3');
-    </script>
-</head>
-
-<body>
-    <div class="bg text-center">
-        <div><button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#wfDemo" data-backdrop="static">
-        LAUNCH WEARFITS DEMO
-    </button></div>
-    </div>
+@section('content')
     <!-- Modal -->
     <div class="modal" id="wfDemo" tabindex="-1" role="dialog" aria-labelledby="wfDemoTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="wfDemoTitle"><img src="wearfits_logo.png" alt="WearFits" style="height: 35px" />
+                    <h5 class="modal-title" id="wfDemoTitle"><img src="{{ asset('img/wearfits_logo.png') }}" alt="WearFits" style="height: 35px" />
                         <span class="sm">DEMO</span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div id="carouselWF" class="carousel slide" data-keyboard="false" data-wrap="false" data-ride="false">
@@ -77,12 +44,12 @@
                                                             <div class="col-8">
                                                                 <div class="styled-select">
                                                                     <select class="form-control-lg noglow" id="avatarSize">
-                                                                    <option>34</option>
-                                                                    <option>36</option>
-                                                                    <option selected>38</option>
-                                                                    <option>40</option>
-                                                                    <option>42</option>
-                                                                </select>
+                                                                        <option>34</option>
+                                                                        <option>36</option>
+                                                                        <option selected>38</option>
+                                                                        <option>40</option>
+                                                                        <option>42</option>
+                                                                    </select>
                                                                 </div>
                                                                 <!-- <input type="text" class="form-control-lg weihei" id="weight" placeholder="kg"> -->
                                                             </div>
@@ -130,7 +97,7 @@
                                             <div class="sm text-uppercase font-weight-bold">BODY TYPE</div>
                                             <div class="bodytype py-1 mt-3" id="titleSil">Hourglass</div>
                                             <div class="mx-auto">
-                                                <img id="silImg" class="img-fluid" src="sil/hourglass.png">
+                                                <img id="silImg" class="img-fluid" src="{{ asset('img/sil/hourglass.png') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -217,16 +184,16 @@
 
                                             <div style="position:absolute;right:0;top:-35px;z-index:4;width:80px">
                                                 <div onclick="wearfits.toggleStrainMap(this)" class="pag-visited page-link" style="display:inline-block;float:right">COMFORT</div>
-												<div onclick="wearfits.downloadAR(this)" id="show_ar_button" class="pag-visited page-link" style="display:none;float:right;;margin-top:5px">AR</div>
+                                                <div onclick="wearfits.downloadAR(this)" id="show_ar_button" class="pag-visited page-link" style="display:none;float:right;;margin-top:5px">AR</div>
                                             </div>
 
                                             <div style="position:absolute;left:0;top:-35px;z-index:4;width:100px">
                                                 <div onclick="wearfits.toggleTheme(this)" class="pag-visited page-link" style="display:inline-block">BACKGROUND</div>
                                                 <div onclick="wearfits.toggleFrontBack(this)" class="pag-visited page-link" style="display:inline-block;margin-top:5px">FRONT/BACK</div>
                                                 <div onclick="wearfits.toggleRotation(this)" class="pag-visited page-link" style="display:inline-block;margin-top:5px">ROTATION</div>
-												<div onclick="wearfits.toggleZoom(this)" class="pag-visited page-link" style="display:inline-block;margin-top:5px">ZOOM</div>
+                                                <div onclick="wearfits.toggleZoom(this)" class="pag-visited page-link" style="display:inline-block;margin-top:5px">ZOOM</div>
                                             </div>
-                                              
+
                                             <div id="wearfits_viewer" style="width:100%;height:100%"></div> <!-- canvas inside -->
                                         </div>
                                     </div>
@@ -259,13 +226,4 @@
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
-    <script src="ws.js"></script>
-</body>
-
-</html>
+@endsection
