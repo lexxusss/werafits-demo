@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Create New %%modelName%%</div>
+                    <div class="card-header">Edit GarmentName #{{ $garmentname->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/garment-name') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -21,11 +21,13 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => '/%%routeGroup%%%%viewName%%', 'class' => 'form-horizontal', 'files' => true]) !!}
+                        <form method="POST" action="{{ url('/admin/garment-name/' . $garmentname->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
+                            {{ csrf_field() }}
 
-                        @include ('%%viewTemplateDir%%.form', ['formMode' => 'create'])
+                            @include ('admin.garment-name.form', ['formMode' => 'edit'])
 
-                        {!! Form::close() !!}
+                        </form>
 
                     </div>
                 </div>

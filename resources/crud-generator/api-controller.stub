@@ -2,9 +2,7 @@
 
 namespace DummyNamespace;
 
-use DummyRootNamespaceHttp\Requests;
 use DummyRootNamespaceHttp\Controllers\Controller;
-
 use DummyRootNamespace{{modelNamespace}}{{modelName}};
 use Illuminate\Http\Request;
 
@@ -17,7 +15,7 @@ class DummyClass extends Controller
      */
     public function index(Request $request)
     {
-        ${{crudName}} = {{modelName}}::latest()->paginate({{pagination}});
+        ${{crudName}} = {{modelName}}::query()->latest()->paginate({{pagination}});
 
         return ${{crudName}};
     }
@@ -32,7 +30,7 @@ class DummyClass extends Controller
     public function store(Request $request)
     {
         {{validationRules}}
-        ${{crudNameSingular}} = {{modelName}}::create($request->all());
+        ${{crudNameSingular}} = {{modelName}}::query()->create($request->all());
 
         return response()->json(${{crudNameSingular}}, 201);
     }
@@ -46,7 +44,7 @@ class DummyClass extends Controller
      */
     public function show($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
 
         return ${{crudNameSingular}};
     }
@@ -62,7 +60,7 @@ class DummyClass extends Controller
     public function update(Request $request, $id)
     {
         {{validationRules}}
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
         ${{crudNameSingular}}->update($request->all());
 
         return response()->json(${{crudNameSingular}}, 200);

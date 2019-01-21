@@ -1,0 +1,34 @@
+{
+  "fields": [
+    {
+      "name": "hash",
+      "type": "string"
+    },
+    {
+      "name": "s3_url_abc",
+      "type": "text"
+    },
+    {
+      "name": "s3_url_glb",
+      "type": "text"
+    },
+    {
+      "name": "s3_url_obj",
+      "type": "text"
+    }
+  ],
+  "validations": [
+    {
+      "field": "s3_url_abc",
+      "rules": "required|max:255"
+    },
+    {
+      "field": "s3_url_glb",
+      "rules": "required|max:255"
+    },
+    {
+      "field": "s3_url_obj",
+      "rules": "required|max:255"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Http\Controllers\Admin;
 
-use DummyRootNamespaceHttp\Controllers\Controller;
-use DummyRootNamespace{{modelNamespace}}{{modelName}};
+use App\Http\Controllers\Controller;
+use App\Model\GarmentName;
 use Illuminate\Http\Request;
 
-class DummyClass extends Controller
+class GarmentNameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +17,16 @@ class DummyClass extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = {{pagination}};
+        $perPage = 25;
 
         if (!empty($keyword)) {
-            ${{crudName}} = {{modelName}}::query()->{{whereSnippet}}latest()->paginate($perPage);
+            $garmentname = GarmentName::query()->where('name', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
         } else {
-            ${{crudName}} = {{modelName}}::query()->latest()->paginate($perPage);
+            $garmentname = GarmentName::query()->latest()->paginate($perPage);
         }
 
-        return view('{{viewPath}}{{viewName}}.index', compact('{{crudName}}'));
+        return view('admin.garment-name.index', compact('garmentname'));
     }
 
     /**
@@ -35,7 +36,7 @@ class DummyClass extends Controller
      */
     public function create()
     {
-        return view('{{viewPath}}{{viewName}}.create');
+        return view('admin.garment-name.create');
     }
 
     /**
@@ -47,12 +48,14 @@ class DummyClass extends Controller
      */
     public function store(Request $request)
     {
-        {{validationRules}}
+        $this->validate($request, [
+			'name' => 'required|max:255'
+		]);
         $requestData = $request->all();
-        {{fileSnippet}}
-        {{modelName}}::query()->create($requestData);
+        
+        GarmentName::query()->create($requestData);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} added!');
+        return redirect('admin/garment-name')->with('flash_message', 'GarmentName added!');
     }
 
     /**
@@ -63,9 +66,9 @@ class DummyClass extends Controller
      */
     public function show($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
+        $garmentname = GarmentName::query()->findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.show', compact('{{crudNameSingular}}'));
+        return view('admin.garment-name.show', compact('garmentname'));
     }
 
     /**
@@ -76,9 +79,9 @@ class DummyClass extends Controller
      */
     public function edit($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
+        $garmentname = GarmentName::query()->findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.edit', compact('{{crudNameSingular}}'));
+        return view('admin.garment-name.edit', compact('garmentname'));
     }
 
     /**
@@ -91,13 +94,15 @@ class DummyClass extends Controller
      */
     public function update(Request $request, $id)
     {
-        {{validationRules}}
+        $this->validate($request, [
+			'name' => 'required|max:255'
+		]);
         $requestData = $request->all();
-        {{fileSnippet}}
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
-        ${{crudNameSingular}}->update($requestData);
+        
+        $garmentname = GarmentName::query()->findOrFail($id);
+        $garmentname->update($requestData);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} updated!');
+        return redirect('admin/garment-name')->with('flash_message', 'GarmentName updated!');
     }
 
     /**
@@ -109,8 +114,8 @@ class DummyClass extends Controller
      */
     public function destroy($id)
     {
-        {{modelName}}::destroy($id);
+        GarmentName::destroy($id);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} deleted!');
+        return redirect('admin/garment-name')->with('flash_message', 'GarmentName deleted!');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Http\Controllers\Admin;
 
-use DummyRootNamespaceHttp\Controllers\Controller;
-use DummyRootNamespace{{modelNamespace}}{{modelName}};
+use App\Http\Controllers\Controller;
+use App\Model\GarmentSize;
 use Illuminate\Http\Request;
 
-class DummyClass extends Controller
+class GarmentSizeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +17,18 @@ class DummyClass extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = {{pagination}};
+        $perPage = 25;
 
         if (!empty($keyword)) {
-            ${{crudName}} = {{modelName}}::query()->{{whereSnippet}}latest()->paginate($perPage);
+            $garmentsize = GarmentSize::query()->where('name', 'LIKE', "%$keyword%")
+                ->orWhere('s3_url_zpac', 'LIKE', "%$keyword%")
+                ->orWhere('garment_name_id', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
         } else {
-            ${{crudName}} = {{modelName}}::query()->latest()->paginate($perPage);
+            $garmentsize = GarmentSize::query()->latest()->paginate($perPage);
         }
 
-        return view('{{viewPath}}{{viewName}}.index', compact('{{crudName}}'));
+        return view('admin.garment-size.index', compact('garmentsize'));
     }
 
     /**
@@ -35,7 +38,7 @@ class DummyClass extends Controller
      */
     public function create()
     {
-        return view('{{viewPath}}{{viewName}}.create');
+        return view('admin.garment-size.create');
     }
 
     /**
@@ -47,12 +50,15 @@ class DummyClass extends Controller
      */
     public function store(Request $request)
     {
-        {{validationRules}}
+        $this->validate($request, [
+			'name' => 'required|max:255',
+			's3_url_zpac' => 'required|max:255'
+		]);
         $requestData = $request->all();
-        {{fileSnippet}}
-        {{modelName}}::query()->create($requestData);
+        
+        GarmentSize::query()->create($requestData);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} added!');
+        return redirect('admin/garment-size')->with('flash_message', 'GarmentSize added!');
     }
 
     /**
@@ -63,9 +69,9 @@ class DummyClass extends Controller
      */
     public function show($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
+        $garmentsize = GarmentSize::query()->findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.show', compact('{{crudNameSingular}}'));
+        return view('admin.garment-size.show', compact('garmentsize'));
     }
 
     /**
@@ -76,9 +82,9 @@ class DummyClass extends Controller
      */
     public function edit($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
+        $garmentsize = GarmentSize::query()->findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.edit', compact('{{crudNameSingular}}'));
+        return view('admin.garment-size.edit', compact('garmentsize'));
     }
 
     /**
@@ -91,13 +97,16 @@ class DummyClass extends Controller
      */
     public function update(Request $request, $id)
     {
-        {{validationRules}}
+        $this->validate($request, [
+			'name' => 'required|max:255',
+			's3_url_zpac' => 'required|max:255'
+		]);
         $requestData = $request->all();
-        {{fileSnippet}}
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
-        ${{crudNameSingular}}->update($requestData);
+        
+        $garmentsize = GarmentSize::query()->findOrFail($id);
+        $garmentsize->update($requestData);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} updated!');
+        return redirect('admin/garment-size')->with('flash_message', 'GarmentSize updated!');
     }
 
     /**
@@ -109,8 +118,8 @@ class DummyClass extends Controller
      */
     public function destroy($id)
     {
-        {{modelName}}::destroy($id);
+        GarmentSize::destroy($id);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} deleted!');
+        return redirect('admin/garment-size')->with('flash_message', 'GarmentSize deleted!');
     }
 }

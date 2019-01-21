@@ -1,0 +1,21 @@
+{
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "materials",
+      "type": "hasMany",
+      "class": "App\\Model\\Material"
+    }
+  ],
+  "validations": [
+    {
+      "field": "name",
+      "rules": "required|max:255"
+    }
+  ]
+}

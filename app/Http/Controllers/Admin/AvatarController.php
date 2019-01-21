@@ -1,12 +1,12 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Http\Controllers\Admin;
 
-use DummyRootNamespaceHttp\Controllers\Controller;
-use DummyRootNamespace{{modelNamespace}}{{modelName}};
+use App\Http\Controllers\Controller;
+use App\Model\Avatar;
 use Illuminate\Http\Request;
 
-class DummyClass extends Controller
+class AvatarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +17,19 @@ class DummyClass extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = {{pagination}};
+        $perPage = 25;
 
         if (!empty($keyword)) {
-            ${{crudName}} = {{modelName}}::query()->{{whereSnippet}}latest()->paginate($perPage);
+            $avatar = Avatar::query()->where('hash', 'LIKE', "%$keyword%")
+                ->orWhere('s3_url_abc', 'LIKE', "%$keyword%")
+                ->orWhere('s3_url_glb', 'LIKE', "%$keyword%")
+                ->orWhere('s3_url_obj', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
         } else {
-            ${{crudName}} = {{modelName}}::query()->latest()->paginate($perPage);
+            $avatar = Avatar::query()->latest()->paginate($perPage);
         }
 
-        return view('{{viewPath}}{{viewName}}.index', compact('{{crudName}}'));
+        return view('admin.avatar.index', compact('avatar'));
     }
 
     /**
@@ -35,7 +39,7 @@ class DummyClass extends Controller
      */
     public function create()
     {
-        return view('{{viewPath}}{{viewName}}.create');
+        return view('admin.avatar.create');
     }
 
     /**
@@ -47,12 +51,16 @@ class DummyClass extends Controller
      */
     public function store(Request $request)
     {
-        {{validationRules}}
+        $this->validate($request, [
+			's3_url_abc' => 'required|max:255',
+			's3_url_glb' => 'required|max:255',
+			's3_url_obj' => 'required|max:255'
+		]);
         $requestData = $request->all();
-        {{fileSnippet}}
-        {{modelName}}::query()->create($requestData);
+        
+        Avatar::query()->create($requestData);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} added!');
+        return redirect('admin/avatar')->with('flash_message', 'Avatar added!');
     }
 
     /**
@@ -63,9 +71,9 @@ class DummyClass extends Controller
      */
     public function show($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
+        $avatar = Avatar::query()->findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.show', compact('{{crudNameSingular}}'));
+        return view('admin.avatar.show', compact('avatar'));
     }
 
     /**
@@ -76,9 +84,9 @@ class DummyClass extends Controller
      */
     public function edit($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
+        $avatar = Avatar::query()->findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.edit', compact('{{crudNameSingular}}'));
+        return view('admin.avatar.edit', compact('avatar'));
     }
 
     /**
@@ -91,13 +99,17 @@ class DummyClass extends Controller
      */
     public function update(Request $request, $id)
     {
-        {{validationRules}}
+        $this->validate($request, [
+			's3_url_abc' => 'required|max:255',
+			's3_url_glb' => 'required|max:255',
+			's3_url_obj' => 'required|max:255'
+		]);
         $requestData = $request->all();
-        {{fileSnippet}}
-        ${{crudNameSingular}} = {{modelName}}::query()->findOrFail($id);
-        ${{crudNameSingular}}->update($requestData);
+        
+        $avatar = Avatar::query()->findOrFail($id);
+        $avatar->update($requestData);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} updated!');
+        return redirect('admin/avatar')->with('flash_message', 'Avatar updated!');
     }
 
     /**
@@ -109,8 +121,8 @@ class DummyClass extends Controller
      */
     public function destroy($id)
     {
-        {{modelName}}::destroy($id);
+        Avatar::destroy($id);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} deleted!');
+        return redirect('admin/avatar')->with('flash_message', 'Avatar deleted!');
     }
 }

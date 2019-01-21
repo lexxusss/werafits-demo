@@ -1,0 +1,41 @@
+{
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "s3_url_zpac",
+      "type": "text"
+    },
+    {
+      "name": "garment_name_id",
+      "type": "integer#unsigned"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "garment_name_id",
+      "references": "id",
+      "on": "garment_names",
+      "onDelete": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "garmentName",
+      "type": "belongsTo",
+      "class": "App\\Model\\GarmentName"
+    }
+  ],
+  "validations": [
+    {
+      "field": "name",
+      "rules": "required|max:255"
+    },
+    {
+      "field": "s3_url_zpac",
+      "rules": "required|max:255"
+    }
+  ]
+}
