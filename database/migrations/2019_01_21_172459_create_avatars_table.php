@@ -16,9 +16,9 @@ class CreateAvatarsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('hash')->nullable();
-            $table->text('s3_url_abc')->nullable();
-            $table->text('s3_url_glb')->nullable();
-            $table->text('s3_url_obj')->nullable();
+            $table->string('s3_url_abc')->nullable();
+            $table->string('s3_url_glb')->nullable();
+            $table->string('s3_url_obj')->nullable();
             });
     }
 

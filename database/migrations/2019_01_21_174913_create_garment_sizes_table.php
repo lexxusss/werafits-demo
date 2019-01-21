@@ -16,7 +16,7 @@ class CreateGarmentSizesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name')->nullable();
-            $table->text('s3_url_zpac')->nullable();
+            $table->string('s3_url_zpac')->nullable();
             $table->integer('garment_name_id')->unsigned();
             $table->foreign('garment_name_id')->references('id')->on('garment_names')->onDelete('cascade')->onUpdate('cascade');
             });

@@ -6,15 +6,15 @@
     },
     {
       "name": "s3_url_abc",
-      "type": "text"
+      "type": "string"
     },
     {
       "name": "s3_url_glb",
-      "type": "text"
+      "type": "string"
     },
     {
       "name": "s3_url_obj",
-      "type": "text"
+      "type": "string"
     }
   ],
   "validations": [

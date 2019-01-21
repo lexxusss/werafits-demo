@@ -1,0 +1,72 @@
+{
+  "fields": [
+    {
+      "name": "garment_size_id",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "avatar_id",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "s3_url_garment_json",
+      "type": "string"
+    },
+    {
+      "name": "s3_url_garment_preview_json",
+      "type": "string"
+    },
+    {
+      "name": "s3_url_garment_usdz",
+      "type": "string"
+    },
+    {
+      "name": "s3_url_garment_metadata_json",
+      "type": "string"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "garment_size_id",
+      "references": "id",
+      "on": "garment_sizes",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "avatar_id",
+      "references": "id",
+      "on": "avatars",
+      "onDelete": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "garmentSize",
+      "type": "belongsTo",
+      "class": "App\\Model\\GarmentSize"
+    },
+    {
+      "name": "avatar",
+      "type": "belongsTo",
+      "class": "App\\Model\\Avatar"
+    }
+  ],
+  "validations": [
+    {
+      "field": "s3_url_garment_json",
+      "rules": "required|max:255"
+    },
+    {
+      "field": "s3_url_garment_preview_json",
+      "rules": "required|max:255"
+    },
+    {
+      "field": "s3_url_garment_usdz",
+      "rules": "required|max:255"
+    },
+    {
+      "field": "s3_url_garment_metadata_json",
+      "rules": "required|max:255"
+    }
+  ]
+}

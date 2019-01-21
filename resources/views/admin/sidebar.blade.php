@@ -5,27 +5,13 @@
         </div>
 
         <div class="card-body">
-            <ul class="nav" role="tablist">
-                <li role="presentation">
-                    <a href="{{ url('/admin') }}">
-                        Dashboard
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav" role="tablist">
-                <li role="presentation">
-                    <a href="{{ url('/admin/garment-name') }}">
-                        GarmentNames
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav" role="tablist">
-                <li role="presentation">
-                    <a href="{{ url('/admin/avatar') }}">
-                        Avatars
-                    </a>
-                </li>
-            </ul>
+            <div class="nav navbar-nav" role="tablist">
+                <p role="presentation"><a href="{{ url('/admin') }}"><h5>Dashboard</h5></a></p>
+                <p role="presentation"><a href="{{ url('/admin/avatar') }}">Avatars</a></p>
+                <p role="presentation"><a href="{{ url('/admin/garment-name') }}">GarmentNames</a></p>
+                <p role="presentation"><a href="{{ url('/admin/garment-size') }}">GarmentSizes</a></p>
+                <p role="presentation"><a href="{{ url('/admin/symulation') }}">Simulations</a></p>
+            </div>
         </div>
     </div>
 </div>

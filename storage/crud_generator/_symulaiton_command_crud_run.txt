@@ -1,0 +1,1 @@
+php artisan crud:generate Symulation --fields_from_file="storage/crud_generator/symulation.json" --view-path=admin --controller-namespace=Admin --route-group=admin --form-helper=html --model-namespace=Model

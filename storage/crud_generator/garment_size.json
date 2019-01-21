@@ -6,7 +6,7 @@
     },
     {
       "name": "s3_url_zpac",
-      "type": "text"
+      "type": "string"
     },
     {
       "name": "garment_name_id",

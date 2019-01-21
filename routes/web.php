@@ -20,7 +20,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 // admin
 Route::resource('admin/garment-name', 'Admin\GarmentNameController');
-
 Route::resource('admin/avatar', 'Admin\AvatarController');
-
 Route::resource('admin/garment-size', 'Admin\GarmentSizeController');
+Route::resource('admin/symulation', 'Admin\SymulationController');
