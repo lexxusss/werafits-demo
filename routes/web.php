@@ -15,11 +15,9 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', ['as' => 'admin', 'uses' => 'AdminController@index']);
+
+    Route::resource('garment-name', 'GarmentNameController');
+    Route::resource('avatar', 'AvatarController');
+    Route::resource('garment-size', 'GarmentSizeController');
+    Route::resource('symulation', 'SymulationController');
 });
-
-
-// admin
-Route::resource('admin/garment-name', 'Admin\GarmentNameController');
-Route::resource('admin/avatar', 'Admin\AvatarController');
-Route::resource('admin/garment-size', 'Admin\GarmentSizeController');
-Route::resource('admin/symulation', 'Admin\SymulationController');

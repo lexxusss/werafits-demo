@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace' => 'Api'], function () {
+    Route::post('/refresh_avatars', ['as' => 'refresh_avatars', 'uses' => 'AvatarsController@refreshAvatars']);
+    Route::post('/get_created_avatar', ['as' => 'get_created_avatar', 'uses' => 'AvatarsController@getCreatedAvatar']);
+});

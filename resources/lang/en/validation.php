@@ -131,6 +131,8 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+
+        'is_md5' => 'Hash string has to be valid md5-hash',
     ],
 
     /*

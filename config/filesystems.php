@@ -1,5 +1,15 @@
 <?php
 
+// s3 config
+$s3Config = [
+    'driver' => 's3',
+    'key' => env('S3_KEY', 'AKIAJBWYCVZNRH6AKABQ'),
+    'secret' => env('S3_SECRET', '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'),
+    'region' => env('S3_REGION', 'us-east-1'),
+    'bucket' => env('S3_BUCKET', 'dls-img'),
+    'visibility' => 'public',
+];
+
 return [
 
     /*
@@ -55,14 +65,8 @@ return [
             'visibility' => 'public',
         ],
 
-        's3' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-        ],
+//        s3
+        \App\Helpers\Consts\FilesystemsAdapters::S3_AVATARS => array_merge($s3Config, ['root' => 'wearfits/avatars']),
 
     ],
 

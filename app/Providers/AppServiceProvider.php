@@ -13,8 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
         \Schema::defaultStringLength(191);
+
+        \Validator::extend('custom.is_md5', function($attribute, $value, $parameters) {
+            return preg_match('/^[a-f0-9]{32}$/', $value);
+        });
     }
 
     /**

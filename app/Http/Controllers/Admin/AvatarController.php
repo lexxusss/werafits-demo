@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AvatarRequest;
 use App\Model\Avatar;
+use App\Model\AvatarRepository;
 use Illuminate\Http\Request;
 
 class AvatarController extends Controller
@@ -45,20 +47,13 @@ class AvatarController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     * @throws \Illuminate\Validation\ValidationException
+     * @param AvatarRequest $request
+     * @param AvatarRepository $repository
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(AvatarRequest $request, AvatarRepository $repository)
     {
-        $this->validate($request, [
-			's3_url_abc' => 'required|max:255',
-			's3_url_glb' => 'required|max:255',
-			's3_url_obj' => 'required|max:255'
-		]);
-        $requestData = $request->all();
-        
-        Avatar::query()->create($requestData);
+        $repository->setAvatarRequest($request)->createUpdateAvatar();
 
         return redirect('admin/avatar')->with('flash_message', 'Avatar added!');
     }
@@ -92,22 +87,13 @@ class AvatarController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param $id
+     * @param AvatarRequest $request
+     * @param AvatarRepository $repository
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, $id)
+    public function update(AvatarRequest $request, AvatarRepository $repository)
     {
-        $this->validate($request, [
-			's3_url_abc' => 'required|max:255',
-			's3_url_glb' => 'required|max:255',
-			's3_url_obj' => 'required|max:255'
-		]);
-        $requestData = $request->all();
-        
-        $avatar = Avatar::query()->findOrFail($id);
-        $avatar->update($requestData);
+        $repository->setAvatarRequest($request)->createUpdateAvatar();
 
         return redirect('admin/avatar')->with('flash_message', 'Avatar updated!');
     }

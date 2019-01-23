@@ -27,7 +27,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $avatar->id }}</td>
                                     </tr>
-                                    <tr><th> Hash </th><td> {{ $avatar->hash }} </td></tr><tr><th> S3 Url Abc </th><td> {{ $avatar->s3_url_abc }} </td></tr><tr><th> S3 Url Glb </th><td> {{ $avatar->s3_url_glb }} </td></tr>
+                                    <tr><th> Hash </th><td> {{ $avatar->hash }} </td></tr><tr><th> Prop </th><td> {{ $avatar->prop }} </td></tr><tr><th> S3 Url Abc </th><td> {{ $avatar->s3_url_abc }} </td></tr><tr><th> S3 Url Glb </th><td> {{ $avatar->s3_url_glb }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

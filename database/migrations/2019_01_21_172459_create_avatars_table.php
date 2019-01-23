@@ -16,6 +16,7 @@ class CreateAvatarsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('hash')->nullable();
+            $table->text('prop')->nullable();
             $table->string('s3_url_abc')->nullable();
             $table->string('s3_url_glb')->nullable();
             $table->string('s3_url_obj')->nullable();
@@ -29,6 +30,8 @@ class CreateAvatarsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('avatars');
+        Schema::enableForeignKeyConstraints();
     }
 }

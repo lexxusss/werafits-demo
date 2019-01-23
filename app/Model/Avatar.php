@@ -25,7 +25,5 @@ class Avatar extends Model
      *
      * @var array
      */
-    protected $fillable = ['hash', 's3_url_abc', 's3_url_glb', 's3_url_obj'];
-
-    
+    protected $fillable = ['hash', 'prop', 's3_url_abc', 's3_url_glb', 's3_url_obj'];
 }

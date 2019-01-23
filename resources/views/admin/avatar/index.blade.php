@@ -13,6 +13,11 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
+                        <a href="javascript:void(0);" class="refresh_avatars btn btn-primary btn-sm" title="Refresh Avatars from Wearfits API">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Refresh Avatars from Wearfits API
+                        </a>
+                        <p class="help-block refresh_avatars_response"></p>
+
                         <form method="GET" action="{{ url('/admin/avatar') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
@@ -30,14 +35,14 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Hash</th><th>S3 Url Abc</th><th>S3 Url Glb</th><th>Actions</th>
+                                        <th>#</th><th>Hash</th><th>Prop</th><th>S3 Url Abc</th><th>S3 Url Glb</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($avatar as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->hash }}</td><td>{{ $item->s3_url_abc }}</td><td>{{ $item->s3_url_glb }}</td>
+                                        <td>{{ $item->hash }}</td><td>{{ $item->prop }}</td><td>{{ $item->s3_url_abc }}</td><td>{{ $item->s3_url_glb }}</td>
                                         <td>
                                             <a href="{{ url('/admin/avatar/' . $item->id) }}" title="View Avatar"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/avatar/' . $item->id . '/edit') }}" title="Edit Avatar"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -60,4 +65,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('footer')
+    <script>
+        $('.refresh_avatars').click(function () {
+            $.post('{{ route("refresh_avatars") }}', {debug: 123}, function (result) {
+                console.log(result);
+                $('.refresh_avatars_response').text(result);
+            });
+        });
+    </script>
 @endsection
